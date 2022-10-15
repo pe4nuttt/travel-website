@@ -1,32 +1,71 @@
-import { Routes, Route } from "react-router-dom";
-import { useEffect } from "react";
-import Navbar from "./components/Navbar";
-import "./App.css";
-import Home from "./components/pages/Home";
-import Services from "./components/pages/Services";
-import Products from "./components/pages/Products";
-import SignUp from "./components/pages/SignUp";
-import Footer from "./components/Footer"
+import { Routes, Route, useNavigate } from 'react-router-dom';
+import { useState, useEffect, useContext } from 'react';
+
+import Layout from '~/components/Layout';
+import Home from '~/pages/Home';
+import Services from '~/pages/Services';
+import Trips from '~/pages/Trips';
+import SignUp from '~/pages/SignUp';
+import PrivateRoute from '~/routes/PrivateRoute';
+import { privateRoutes, publicRoutes } from './routes';
+// import Navbar from './components/Navbar';
+// import Home from '../src/pages/Home';
+// import Services from '../src/pages/Services';
+// import Trips from '../src/pages/Trips';
+// import SignUp from '../src/pages/SignUp';
+// import Footer from './components/Footer';
+// import Form from './components/Signup/Form';
+// import FormLogIn from './components/LogIn';
+import { AuthContext } from '~/context/AuthProvider';
 
 function App() {
-  useEffect(() => {
-    window.scrollTo(0, 0)
-    console.log('scroll to top')
-  })
-  
+    const navigate = useNavigate();
 
-  return (
-    <>
-      <Navbar />
-      <Routes>
-        <Route path="/" exact element={<Home />} />
-        <Route path="/services" element={<Services />} />
-        <Route path="/products" element={<Products />} />
-        <Route path="/sign-up" element={<SignUp />} />
-      </Routes>
-      <Footer />
-    </>
-  );
+    const { isAuth, setIsAuth } = useContext(AuthContext);
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+        console.log('scroll to top');
+    });
+
+    return (
+        <>
+            <Routes>
+                {publicRoutes.map((route) => {
+                    const Page = route.component;
+
+                    return (
+                        <Route
+                            key={route.id}
+                            path={route.path}
+                            element={
+                                <Layout>
+                                    <Page />
+                                </Layout>
+                            }
+                        />
+                    );
+                })}
+
+                {privateRoutes.map((route) => {
+                    const Page = route.component;
+                    return (
+                        <Route
+                            key={route.id}
+                            path={route.path}
+                            element={
+                                <PrivateRoute>
+                                    <Layout>
+                                        <Page />
+                                    </Layout>
+                                </PrivateRoute>
+                            }
+                        />
+                    );
+                })}
+            </Routes>
+        </>
+    );
 }
 
 export default App;

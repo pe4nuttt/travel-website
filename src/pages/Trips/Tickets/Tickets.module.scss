@@ -1,0 +1,129 @@
+.ticket {
+    padding: 4rem;
+    background: #fff;
+
+    & > h1 {
+        margin-bottom: 18px;
+    }
+
+    & h1,
+    h2,
+    h3 {
+        text-align: center;
+    }
+
+    & .title {
+        font-size: 3rem;
+    }
+
+    & .description {
+        font-size: 1.6rem;
+    }
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    max-width: 1120px;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.wrapper {
+    margin: 60px 0 40px;
+}
+
+.ticket_items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-bottom: 24px;
+    width: 100%;
+}
+
+.ticket__item {
+    display: flex;
+    flex-flow: column;
+    box-shadow: 0 6px 20px rgb(56 125 255 / 17%);
+    filter: drop-shadow(0 6px 20px rgba(56, 125, 255, 0.017));
+    border-radius: 10px;
+    overflow: hidden;
+    text-decoration: none;
+    border: 1px solid #ccc;
+    margin: 1rem;
+    width: 30%;
+}
+
+.ticket__pic-wrap {
+    position: relative;
+    width: 100%;
+    padding-top: 67%;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.ticket__img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+    object-fit: cover;
+    transition: all 0.2s linear;
+}
+
+.ticket__img:hover {
+    transform: scale(1.1);
+}
+
+.ticket__label {
+    width: 100%;
+    height: 40px;
+    display: flex;
+    background-color: #242424;
+    color: #fff;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size: 1.4rem;
+}
+
+.ticket__label i {
+    margin-right: 6px;
+}
+
+.ticket__icon {
+}
+
+.ticket__title {
+    font-size: 2rem;
+    margin: 24px 18px 18px;
+}
+
+.ticket__description {
+    margin: 0 18px 12px;
+    font-size: 1.4rem;
+    color: rgb(105, 104, 104);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.ticket__buying {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 18px 18px 24px;
+}
+
+.ticket__modal {
+}
+
+.ticket__price {
+    font-size: 1.6rem;
+    margin-right: 24px;
+}
